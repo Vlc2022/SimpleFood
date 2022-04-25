@@ -1,9 +1,193 @@
-@import 'vars';
-@import 'fonts';
 @import 'reset';
+@import 'fonts';
+@import 'vars';
 @import 'global';
 
+.header {
+    padding: 60px 0;
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+    }
+}
 
+.menu {
+    display: flex;
+    align-items: center;
+    &__list,
+    &__user,
+    &__user-item,
+    &__user-link {
+        display: flex; 
+    }
+    &__list-item {
+        margin-right: 50px;
+    }
+    &__list-link {
+        font-size: 18px;
+    }
+    &__list-link--active {
+        color: $orange;
+    }
+    &__user-item {
+        position: relative;
+        align-items: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid transparent;
+        background-color: transparent;
+        transition: path 0.3s, background-color 0.3s, box-shadow 0.3s, border-radius 0.3s;
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+        &:focus,
+        &:active {
+            path {
+                fill: none;
+            }
+        }
+        &:hover {
+            background-color: #FF7A50;
+            border-radius: 5px;
+        }
+        &:hover > .menu__user-link {
+            ellipse {
+                stroke: #fff;
+            };
+            path {
+                stroke: #fff;
+            }
+        }
+        &:hover > .menu__user-link .menu__user-num {
+            color: $orange;
+            background-color: #fff;
+        }
+    }
+    &__user-link {
+        position: relative;
+        margin: 0 auto;
+        appearance: none;
+        background-color: transparent;
+        border: transparent; 
+        transition: path 0.3s;
+        &--cart {
+            position: relative;
+        }  
+    }
+    &__user-num {
+        position: absolute;
+        top: -5px;
+        right: -8px;
+        width: 14px;
+        height: 14px;
+        font-size: 9px;
+        line-height: 1.5;
+        text-align: center;
+        color: #fff;
+        background-color: $orange;
+        border-radius: 50%;
+        transition: color 0.3s, background-color 0.3s;
+    }
+}
+
+.form-search {
+    position: absolute;
+    top: 50px;
+    right: -5px;
+    z-index: 6;
+    display: none;
+    &__btn {
+        max-width: 210px;
+        width: 100%;
+    }
+    &__btn-img {
+        left: 70px;
+    }
+    &.active {
+        display: block;
+        transform: translateY(0);
+    }
+}
+
+.footer-top {
+    &__items,
+    &__item,
+    &__socials {
+        display: flex;
+    }
+    &__items {
+        justify-content: space-between;
+        padding: 120px 0 70px;
+    }
+    &__item {
+        flex-direction: column;
+        max-width: 190px;
+        margin-right: 60px;
+        padding-right: 15px;
+    }
+    &__item-form,
+    &__item-contact {
+        max-width: 200px;
+        width: 100%;
+        padding: 0;
+    }
+    &__logo {
+        margin-bottom: 30px;
+    }
+    &__list-item:not(:last-child) {
+        margin-bottom: 20px;
+    }
+    &__contact {
+        position: relative;
+        margin-bottom: 14px;
+        padding-left: 30px;
+        font-size: 16px;
+        line-height: 2;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 0;
+        }
+        &--address::before {
+            background-image: url('../images/icons/location.svg');
+            width: 18px;
+            height: 20px;
+        }
+        &--phone::before {
+            background-image: url('../images/icons/calling.svg');
+            width: 22px;
+            height: 22px;
+        }
+        &--email::before {
+            background-image: url('../images/icons/message.svg');
+            width: 22px;
+            height: 20px;
+        }
+    }
+    &__socials {
+        margin-top: 10px;
+    }
+    &__social-link {
+        width: 35px;
+        height: 35px;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__social:not(:last-child) {
+           margin-right: 18px;
+    }
+}
+
+
+.footer-bottom {
+    padding: 30px 5px;
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid $gray;
+}
 
 
 @import 'media';
